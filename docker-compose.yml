@@ -10,10 +10,10 @@ services:
   order:
     build: .
     ports:
-        - 11093:9093
+        - 11094:9094
     environment:
       - SPRING_PROFILES_ACTIVE=prod
-      - server.port=9093
+      - server.port=9094
     external_links:
           - petstoreinfrastructure_petshop-mysql_1:mysqlhost
           - petstoreinfrastructure_petshop-consul_1:consul
