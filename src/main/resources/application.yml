@@ -1,0 +1,9 @@
+server:
+  port: 9006
+
+spring:
+  profiles:
+    active: local
+  application:
+    name: order
+logging.level.project.user.UserClient: DEBUG

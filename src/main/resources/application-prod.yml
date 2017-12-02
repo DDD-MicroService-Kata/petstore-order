@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url: jdbc:mysql://mysqlhost:3306/petstore_order
+    username: root
+    password: dev
+  cloud:
+    consul:
+      discovery:
+        instanceId: ${spring.application.name}
