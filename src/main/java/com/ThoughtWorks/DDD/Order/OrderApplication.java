@@ -1,10 +1,13 @@
 package com.ThoughtWorks.DDD.Order;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.spi.DocumentationType;
@@ -27,6 +30,13 @@ public class OrderApplication {
 				.apis(RequestHandlerSelectors.any())
 				.paths(PathSelectors.any())
 				.build();
-//		/swagger-ui.html
+	}
+
+	@Bean
+	public Jackson2ObjectMapperBuilder jacksonBuilder () {
+		Jackson2ObjectMapperBuilder json = Jackson2ObjectMapperBuilder.json();
+		json.featuresToEnable(SerializationFeature.WRAP_ROOT_VALUE);
+		json.featuresToEnable(DeserializationFeature.UNWRAP_ROOT_VALUE);
+		return json;
 	}
 }

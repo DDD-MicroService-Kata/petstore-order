@@ -1,0 +1,17 @@
+{
+  "data": {
+    "type": "order",
+    "attributes": {
+      "name": "Ryan",
+      "province": "Sichuan",
+      "city": "Chengdu",
+      "area": "Gaoxin",
+      "street": "Tianfu Avenue Middle Rd",
+      "moreDetails": "ThoughtWorks Software Technologies (Chengdu) Ltd. Room 5, 7th Floor, Area E1-1 Tianfu Software Park, No.1268 ",
+      "price": 1000,
+      "amount": 1,
+      "description": "a pretty Cat",
+      "brand": "Cat Room"
+    }
+  }
+}

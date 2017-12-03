@@ -14,6 +14,7 @@ buildscript {
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
+apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 apply plugin: "io.spring.dependency-management"
 
@@ -27,6 +28,15 @@ repositories {
 
 ext {
 	springCloudVersion='Dalston.SR4'
+}
+
+idea {
+    project {
+        jdkName = JavaVersion.VERSION_1_8
+        languageLevel = JavaVersion.VERSION_1_8
+
+        vcs = "Git"
+    }
 }
 
 dependencyManagement {
