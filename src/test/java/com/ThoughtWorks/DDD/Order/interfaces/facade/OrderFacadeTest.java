@@ -1,4 +1,4 @@
-package com.ThoughtWorks.DDD.Order.interfaces;
+package com.ThoughtWorks.DDD.Order.interfaces.facade;
 
 import com.ThoughtWorks.DDD.Order.APIBaseTest;
 import com.github.tomakehurst.wiremock.junit.WireMockRule;

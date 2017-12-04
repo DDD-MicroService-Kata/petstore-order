@@ -9,5 +9,6 @@ CREATE TABLE `pet_order` (
   `price`     BIGINT  NOT NULL,
   `amount`     BIGINT  NOT NULL,
   `description`     VARCHAR(60)  NOT NULL,
-  `brand`     VARCHAR(20)  NOT NULL
+  `brand`     VARCHAR(20)  NOT NULL,
+  `created_date` TIMESTAMP
 );

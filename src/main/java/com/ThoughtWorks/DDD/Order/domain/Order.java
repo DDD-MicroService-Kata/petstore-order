@@ -1,10 +1,12 @@
 package com.ThoughtWorks.DDD.Order.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.time.ZonedDateTime;
 
 @javax.persistence.Entity(name = "pet_order")
 public class Order implements Entity<Long> {
@@ -15,6 +17,8 @@ public class Order implements Entity<Long> {
     private Customer customer;
     private Shop shop;
     private Pet pet;
+    @CreatedDate
+    private ZonedDateTime createdDate = ZonedDateTime.now();
 
     public Order() {
     }

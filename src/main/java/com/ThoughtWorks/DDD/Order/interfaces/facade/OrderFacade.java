@@ -1,7 +1,9 @@
-package com.ThoughtWorks.DDD.Order.interfaces;
+package com.ThoughtWorks.DDD.Order.interfaces.facade;
 
 import com.ThoughtWorks.DDD.Order.domain.*;
-import com.ThoughtWorks.DDD.Order.repositories.OrderRepository;
+import com.ThoughtWorks.DDD.Order.interfaces.dto.ApiForRequest;
+import com.ThoughtWorks.DDD.Order.interfaces.dto.ApiForResponse;
+import com.ThoughtWorks.DDD.Order.interfaces.dto.OrderDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;

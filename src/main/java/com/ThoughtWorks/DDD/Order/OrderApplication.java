@@ -13,6 +13,9 @@ import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
+import java.text.SimpleDateFormat;
+
 @EnableDiscoveryClient
 @EnableSwagger2
 @SpringBootApplication
@@ -37,6 +40,7 @@ public class OrderApplication {
 		Jackson2ObjectMapperBuilder json = Jackson2ObjectMapperBuilder.json();
 		json.featuresToEnable(SerializationFeature.WRAP_ROOT_VALUE);
 		json.featuresToEnable(DeserializationFeature.UNWRAP_ROOT_VALUE);
+		json.indentOutput(true).dateFormat(new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'"));
 		return json;
 	}
 }
