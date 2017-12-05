@@ -1,4 +1,4 @@
-package com.ThoughtWorks.DDD.Order.domain;
+package com.ThoughtWorks.DDD.Order.domain.Order;
 
 import com.ThoughtWorks.DDD.Order.common.Entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
