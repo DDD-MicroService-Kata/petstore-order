@@ -19,7 +19,7 @@ import static java.net.URI.create;
 
 @RestController
 @RequestMapping("/api/orders")
-public class OrderFacade {
+public class OrderFacade extends HttpFacadeBaseClass {
 
     private final OrderApplicationService orderApplicationService;
     private OrderQueryService orderQueryService;
@@ -47,10 +47,5 @@ public class OrderFacade {
     }
 
 
-    protected ResponseEntity buildResponseEntity(URI location, HttpStatus noContent) {
-        HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(location);
-        return new ResponseEntity<>(headers, noContent);
-    }
 }
 
