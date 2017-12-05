@@ -1,4 +1,4 @@
-package com.ThoughtWorks.DDD.Order.interfaces.dto;
+package com.ThoughtWorks.DDD.Order.Application.DTO;
 
 public final class OrderDTO {
     private String name;

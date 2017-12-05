@@ -1,4 +1,4 @@
-package com.ThoughtWorks.DDD.Order.common;
+package com.ThoughtWorks.DDD.Order.domain.common;
 
 import java.io.Serializable;
 

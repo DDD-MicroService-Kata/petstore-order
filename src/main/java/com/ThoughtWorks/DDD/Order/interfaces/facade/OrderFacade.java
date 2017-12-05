@@ -1,14 +1,11 @@
 package com.ThoughtWorks.DDD.Order.interfaces.facade;
 
-import com.ThoughtWorks.DDD.Order.domain.Order.Address;
-import com.ThoughtWorks.DDD.Order.domain.Order.Customer;
+import com.ThoughtWorks.DDD.Order.Application.OrderApplicationService;
+import com.ThoughtWorks.DDD.Order.Application.OrderQueryService;
 import com.ThoughtWorks.DDD.Order.domain.Order.Order;
-import com.ThoughtWorks.DDD.Order.domain.Order.OrderRepository;
-import com.ThoughtWorks.DDD.Order.domain.Order.Pet;
-import com.ThoughtWorks.DDD.Order.domain.Order.Shop;
-import com.ThoughtWorks.DDD.Order.interfaces.dto.ApiForRequest;
-import com.ThoughtWorks.DDD.Order.interfaces.dto.ApiForResponse;
-import com.ThoughtWorks.DDD.Order.interfaces.dto.OrderDTO;
+import com.ThoughtWorks.DDD.Order.interfaces.common.ApiForRequest;
+import com.ThoughtWorks.DDD.Order.interfaces.common.ApiForResponse;
+import com.ThoughtWorks.DDD.Order.Application.DTO.OrderDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -24,40 +21,33 @@ import static java.net.URI.create;
 @RequestMapping("/api/orders")
 public class OrderFacade {
 
-    private final OrderRepository repository;
+    private final OrderApplicationService orderApplicationService;
+    private OrderQueryService orderQueryService;
 
 
     @Autowired
-    public OrderFacade(OrderRepository repository) {
-        this.repository = repository;
+    public OrderFacade(OrderApplicationService orderApplicationService, OrderQueryService orderQueryService) {
+        this.orderApplicationService = orderApplicationService;
+        this.orderQueryService = orderQueryService;
     }
 
     @GetMapping("/{id}")
     @ResponseBody
     public final ApiForResponse<Order> findById(@PathVariable("id") final long id) {
-        Order order = repository.findOne(id);
+        Order order = orderQueryService.queryOrder(id);
         return new ApiForResponse<>(order.getId(), order);
     }
 
     @PostMapping
     public final ResponseEntity createOrder(@RequestBody final ApiForRequest<OrderDTO> req) {
         OrderDTO attributes = req.getAttributes();
-        Address address = new Address(attributes.getProvince(),
-                attributes.getCity(),
-                attributes.getArea(),
-                attributes.getStreet(),
-                attributes.getMoreDetails());
-        Customer customer = new Customer(attributes.getName(), address);
-        Shop shop = new Shop(attributes.getBrand());
-        Pet pet = new Pet(attributes.getPrice(), attributes.getAmount(), attributes.getDescription());
-        Order order = new Order(customer, shop, pet);
-        repository.save(order);
+        Order order = orderApplicationService.bookPet(attributes);
 
         return buildResponseEntity(create(format("/api/orders/%d", order.getId())), HttpStatus.CREATED);
     }
 
 
-    private ResponseEntity buildResponseEntity(URI location, HttpStatus noContent) {
+    protected ResponseEntity buildResponseEntity(URI location, HttpStatus noContent) {
         HttpHeaders headers = new HttpHeaders();
         headers.setLocation(location);
         return new ResponseEntity<>(headers, noContent);

@@ -1,4 +1,4 @@
-package com.ThoughtWorks.DDD.Order.interfaces.dto;
+package com.ThoughtWorks.DDD.Order.interfaces.common;
 
 import com.fasterxml.jackson.annotation.JsonRootName;
 

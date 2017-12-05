@@ -1,6 +1,6 @@
 package com.ThoughtWorks.DDD.Order.domain.Order;
 
-import com.ThoughtWorks.DDD.Order.common.ValueObject;
+import com.ThoughtWorks.DDD.Order.domain.common.ValueObject;
 
 import javax.persistence.Embeddable;
 
