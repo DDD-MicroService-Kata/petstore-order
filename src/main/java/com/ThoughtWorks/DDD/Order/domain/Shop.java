@@ -1,5 +1,7 @@
 package com.ThoughtWorks.DDD.Order.domain;
 
+import com.ThoughtWorks.DDD.Order.common.ValueObject;
+
 import javax.persistence.Embeddable;
 
 @Embeddable

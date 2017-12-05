@@ -1,5 +1,6 @@
 package com.ThoughtWorks.DDD.Order.domain;
 
+import com.ThoughtWorks.DDD.Order.common.Entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.annotation.CreatedDate;
 
