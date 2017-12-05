@@ -2,17 +2,14 @@ package com.ThoughtWorks.DDD.Order.interfaces.facade;
 
 import com.ThoughtWorks.DDD.Order.Application.OrderApplicationService;
 import com.ThoughtWorks.DDD.Order.Application.OrderQueryService;
-import com.ThoughtWorks.DDD.Order.domain.Order.Order;
+import com.ThoughtWorks.DDD.Order.domain.order.Order;
 import com.ThoughtWorks.DDD.Order.interfaces.common.ApiForRequest;
 import com.ThoughtWorks.DDD.Order.interfaces.common.ApiForResponse;
 import com.ThoughtWorks.DDD.Order.Application.DTO.OrderDTO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.net.URI;
 
 import static java.lang.String.format;
 import static java.net.URI.create;

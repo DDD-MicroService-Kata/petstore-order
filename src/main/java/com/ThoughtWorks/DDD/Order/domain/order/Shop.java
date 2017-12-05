@@ -1,4 +1,4 @@
-package com.ThoughtWorks.DDD.Order.domain.Order;
+package com.ThoughtWorks.DDD.Order.domain.order;
 
 import com.ThoughtWorks.DDD.Order.domain.common.ValueObject;
 

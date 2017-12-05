@@ -1,7 +1,7 @@
 package com.ThoughtWorks.DDD.Order.Application;
 
-import com.ThoughtWorks.DDD.Order.domain.Order.Order;
-import com.ThoughtWorks.DDD.Order.domain.Order.OrderRepository;
+import com.ThoughtWorks.DDD.Order.domain.order.Order;
+import com.ThoughtWorks.DDD.Order.domain.order.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
