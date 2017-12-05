@@ -1,5 +1,10 @@
 package com.ThoughtWorks.DDD.Order.Application.DTO;
 
+import com.ThoughtWorks.DDD.Order.domain.order.Address;
+import com.ThoughtWorks.DDD.Order.domain.order.Customer;
+import com.ThoughtWorks.DDD.Order.domain.order.Pet;
+import com.ThoughtWorks.DDD.Order.domain.order.Shop;
+
 public final class OrderDTO {
     private String name;
     private String province;
@@ -11,6 +16,26 @@ public final class OrderDTO {
     private Integer amount;
     private String description;
     private String brand;
+
+    public Pet getPet() {
+        return new Pet(getPrice(), getAmount(), getDescription());
+    }
+
+    public Shop getShop() {
+        return new Shop(getBrand());
+    }
+
+    public Customer getCustomer() {
+        return new Customer(getName(), getAddress());
+    }
+
+    public Address getAddress() {
+        return new Address(getProvince(),
+                    getCity(),
+                    getArea(),
+                    getStreet(),
+                    getMoreDetails());
+    }
 
     public String getName() {
         return name;
