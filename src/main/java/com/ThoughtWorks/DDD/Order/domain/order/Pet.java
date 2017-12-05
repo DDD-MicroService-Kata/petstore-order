@@ -6,6 +6,7 @@ import javax.persistence.Embeddable;
 
 @Embeddable
 public class Pet implements ValueObject<Pet> {
+    private String petId;
     private Integer price;
     private Integer amount;
     private String description;
@@ -36,5 +37,9 @@ public class Pet implements ValueObject<Pet> {
         return other.price.equals(price)
                 && other.amount.equals(amount)
                 && other.description.equalsIgnoreCase(description);
+    }
+
+    public String getId() {
+        return petId;
     }
 }

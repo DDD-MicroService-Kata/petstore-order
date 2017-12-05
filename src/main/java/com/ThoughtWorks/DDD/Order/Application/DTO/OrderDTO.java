@@ -29,7 +29,7 @@ public final class OrderDTO {
         return new Customer(getName(), getAddress());
     }
 
-    public Address getAddress() {
+    private Address getAddress() {
         return new Address(getProvince(),
                     getCity(),
                     getArea(),

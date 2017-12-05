@@ -4,3 +4,6 @@ spring:
       enabled: false
     bus:
       enabled: false
+pet:
+  ribbon:
+    listOfServers: localhost:9018
