@@ -2,11 +2,12 @@ package com.ThoughtWorks.DDD.Order.infrastructure.client;
 
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @FeignClient(name="pet")
 public interface PetClient {
     @RequestMapping(value = "/api/pets/status", method = RequestMethod.PUT)
-    void changeStatus(PetStatus petStatus);
+    void changeStatus(@RequestBody PetStatusChanged petStatus);
 }

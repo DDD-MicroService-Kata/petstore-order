@@ -4,6 +4,9 @@ import com.fasterxml.jackson.annotation.JsonRootName;
 
 @JsonRootName("data")
 public class ApiForResponse<T> {
+    public ApiForResponse() {
+    }
+
     private Long id;
     private T attributes;
 

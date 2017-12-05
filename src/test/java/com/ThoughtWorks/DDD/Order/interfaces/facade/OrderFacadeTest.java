@@ -58,7 +58,8 @@ public class OrderFacadeTest extends APIBaseTest {
                         "            'pet': {" +
                         "                'price': 1000," +
                         "                'amount': 1," +
-                        "                'description': 'a pretty Cat'" +
+                        "                'description': 'a pretty Cat'," +
+                        "                'petId': '10010'" +
                         "            }" +
                         "        }" +
                         "    }" +

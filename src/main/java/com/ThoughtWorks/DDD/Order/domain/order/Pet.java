@@ -14,10 +14,11 @@ public class Pet implements ValueObject<Pet> {
     public Pet() {
     }
 
-    public Pet(Integer price, Integer amount, String description) {
+    public Pet(Integer price, Integer amount, String description, String petId) {
         this.price = price;
         this.amount = amount;
         this.description = description;
+        this.petId = petId;
     }
 
     public Integer getPrice() {
@@ -32,14 +33,17 @@ public class Pet implements ValueObject<Pet> {
         return description;
     }
 
+    public String getPetId() {
+        return petId;
+    }
+
     @Override
     public boolean sameValueAs(Pet other) {
         return other.price.equals(price)
                 && other.amount.equals(amount)
-                && other.description.equalsIgnoreCase(description);
+                && other.description.equalsIgnoreCase(description)
+                && other.petId.equals(petId);
     }
 
-    public String getId() {
-        return petId;
-    }
+
 }

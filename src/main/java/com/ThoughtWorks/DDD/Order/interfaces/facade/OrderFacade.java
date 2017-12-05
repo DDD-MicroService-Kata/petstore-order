@@ -32,7 +32,8 @@ public class OrderFacade extends HttpFacadeBaseClass {
     @ResponseBody
     public final ApiForResponse<Order> findById(@PathVariable("id") final long id) {
         Order order = orderQueryService.queryOrder(id);
-        return new ApiForResponse<>(order.getId(), order);
+        ApiForResponse<Order> orderApiForResponse = new ApiForResponse<>(order.getId(), order);
+        return orderApiForResponse;
     }
 
     @PostMapping

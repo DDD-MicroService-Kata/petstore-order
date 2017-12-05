@@ -1,0 +1,1 @@
+alter table `pet_order` Add column pet_id CHAR(36)

@@ -11,7 +11,8 @@
       "price": 1000,
       "amount": 1,
       "description": "a pretty Cat",
-      "brand": "Cat Room"
+      "brand": "Cat Room",
+      "petId": "10010"
     }
   }
 }

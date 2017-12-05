@@ -22,7 +22,7 @@ public class OrderApplicationService {
 
     public Order bookPet(OrderDTO orderCommand) {
         Pet pet = orderCommand.getPet();
-        petPurchaseService.lockPetOfOrder(pet.getId());
+        petPurchaseService.lockPetOfOrder(pet.getPetId());
 
         Order order = new Order(orderCommand.getCustomer(),
                 orderCommand.getShop(),

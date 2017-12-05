@@ -16,9 +16,10 @@ public final class OrderDTO {
     private Integer amount;
     private String description;
     private String brand;
+    private String petId;
 
     public Pet getPet() {
-        return new Pet(getPrice(), getAmount(), getDescription());
+        return new Pet(getPrice(), getAmount(), getDescription(), getPetId());
     }
 
     public Shop getShop() {
@@ -75,5 +76,9 @@ public final class OrderDTO {
 
     public String getBrand() {
         return brand;
+    }
+
+    public String getPetId() {
+        return petId;
     }
 }
