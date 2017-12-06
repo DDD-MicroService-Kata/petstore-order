@@ -18,6 +18,8 @@ public class Order implements Entity<Long> {
     private Customer customer;
     private Shop shop;
     private Pet pet;
+
+    private PaymentStatus paymentStatus = PaymentStatus.UNPAID;
     @CreatedDate
     private ZonedDateTime createdDate = ZonedDateTime.now();
 
@@ -66,5 +68,13 @@ public class Order implements Entity<Long> {
     @Override
     public boolean sameIdentityAs(Long otherId) {
         return this.id.equals(otherId);
+    }
+
+    public void paid() {
+        this.paymentStatus = PaymentStatus.PAID;
+    }
+
+    public PaymentStatus getPaymentStatus() {
+        return paymentStatus;
     }
 }
