@@ -1,8 +1,10 @@
 package com.ThoughtWorks.DDD.Order.interfaces.common;
 
-import com.fasterxml.jackson.annotation.JsonRootName;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
-@JsonRootName("data")
+@JsonTypeName(value = "data")
+@JsonTypeInfo(include = JsonTypeInfo.As.WRAPPER_OBJECT, use = JsonTypeInfo.Id.NAME)
 public class ApiForRequest<T> {
     private String type;
     private T attributes;
