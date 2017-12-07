@@ -4,24 +4,30 @@ import com.ThoughtWorks.DDD.Order.Application.DTO.OrderDTO;
 import com.ThoughtWorks.DDD.Order.domain.order.Order;
 import com.ThoughtWorks.DDD.Order.domain.order.OrderRepository;
 import com.ThoughtWorks.DDD.Order.domain.order.Pet;
-import com.ThoughtWorks.DDD.Order.domain.payment.PaymentService;
+import com.ThoughtWorks.DDD.Order.domain.payment.PayOrderService;
+import com.ThoughtWorks.DDD.Order.domain.payment.Payment;
+import com.ThoughtWorks.DDD.Order.domain.payment.PaymentRepository;
+import com.ThoughtWorks.DDD.Order.domain.payment.PaymentStatus;
 import com.ThoughtWorks.DDD.Order.domain.pet.PetPurchaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class OrderApplicationService {
-    private final OrderRepository repository;
+    private final OrderRepository orderRepository;
     private final PetPurchaseService petPurchaseService;
-    private final PaymentService paymentService;
+    private final PayOrderService userPayOrderService;
+    private final PaymentRepository paymentRepository;
 
     @Autowired
-    public OrderApplicationService(OrderRepository repository,
+    public OrderApplicationService(OrderRepository orderRepository,
                                    PetPurchaseService petPurchaseService,
-                                   PaymentService paymentService) {
-        this.repository = repository;
+                                   PayOrderService userPayOrderService,
+                                   PaymentRepository paymentRepository) {
+        this.orderRepository = orderRepository;
         this.petPurchaseService = petPurchaseService;
-        this.paymentService = paymentService;
+        this.userPayOrderService = userPayOrderService;
+        this.paymentRepository = paymentRepository;
     }
 
     public Order bookPet(OrderDTO orderCommand) {
@@ -31,16 +37,20 @@ public class OrderApplicationService {
         Order order = new Order(orderCommand.getCustomer(),
                 orderCommand.getShop(),
                 pet);
-        this.repository.save(order);
+        this.orderRepository.save(order);
+
+        Payment payment = new Payment(order.getId(),
+                PaymentStatus.UNPAID);
+        paymentRepository.save(payment);
         return order;
     }
 
 
     public void payOrder(Long orderId) {
-        Order order = repository.findOne(orderId);
-        if(paymentService.pay(order.getId())) {
-            order.paid();
-            repository.save(order);
-        }
+        Order order = orderRepository.findOne(orderId);
+        Payment payment = userPayOrderService.payOrder(order);
+        paymentRepository.save(payment);
+        order.completed();
+        orderRepository.save(order);
     }
 }

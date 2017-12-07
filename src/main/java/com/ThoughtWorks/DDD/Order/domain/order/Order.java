@@ -4,10 +4,13 @@ import com.ThoughtWorks.DDD.Order.domain.common.Entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.annotation.CreatedDate;
 
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.time.ZonedDateTime;
+
+import static javax.persistence.EnumType.STRING;
 
 @javax.persistence.Entity(name = "pet_order")
 public class Order implements Entity<Long> {
@@ -18,8 +21,9 @@ public class Order implements Entity<Long> {
     private Customer customer;
     private Shop shop;
     private Pet pet;
+    @Enumerated(STRING)
+    private OrderStatus orderStatus = OrderStatus.NOT_COMPLETED;
 
-    private PaymentStatus paymentStatus = PaymentStatus.UNPAID;
     @CreatedDate
     private ZonedDateTime createdDate = ZonedDateTime.now();
 
@@ -65,16 +69,16 @@ public class Order implements Entity<Long> {
         this.pet = pet;
     }
 
+    public OrderStatus getOrderStatus() {
+        return orderStatus;
+    }
+
     @Override
     public boolean sameIdentityAs(Long otherId) {
         return this.id.equals(otherId);
     }
 
-    public void paid() {
-        this.paymentStatus = PaymentStatus.PAID;
-    }
-
-    public PaymentStatus getPaymentStatus() {
-        return paymentStatus;
+    public void completed() {
+        orderStatus = OrderStatus.COMPLETED;
     }
 }

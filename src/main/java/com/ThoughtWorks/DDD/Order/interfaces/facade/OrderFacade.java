@@ -1,11 +1,11 @@
 package com.ThoughtWorks.DDD.Order.interfaces.facade;
 
+import com.ThoughtWorks.DDD.Order.Application.DTO.OrderDTO;
 import com.ThoughtWorks.DDD.Order.Application.OrderApplicationService;
 import com.ThoughtWorks.DDD.Order.Application.OrderQueryService;
 import com.ThoughtWorks.DDD.Order.domain.order.Order;
 import com.ThoughtWorks.DDD.Order.interfaces.common.ApiForRequest;
 import com.ThoughtWorks.DDD.Order.interfaces.common.ApiForResponse;
-import com.ThoughtWorks.DDD.Order.Application.DTO.OrderDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,7 +29,6 @@ public class OrderFacade extends HttpFacadeBaseClass {
     }
 
     @GetMapping("/{id}")
-    @ResponseBody
     public final ApiForResponse<Order> findById(@PathVariable("id") final long id) {
         Order order = orderQueryService.queryOrder(id);
         ApiForResponse<Order> orderApiForResponse = new ApiForResponse<>(order.getId(), order);
@@ -44,6 +43,10 @@ public class OrderFacade extends HttpFacadeBaseClass {
         return buildResponseEntity(create(format("/api/orders/%d", order.getId())), HttpStatus.CREATED);
     }
 
-
+    @PostMapping("/{id}/payments")
+    @ResponseStatus(HttpStatus.CREATED)
+    public final void createOrder(@PathVariable("id") final long id) {
+        orderApplicationService.payOrder(id);
+    }
 }
 
