@@ -1,26 +1,30 @@
 package com.ThoughtWorks.DDD.Order.interfaces.facade;
 
 import com.ThoughtWorks.DDD.Order.APIBaseTest;
+import com.ThoughtWorks.DDD.Order.domain.pet.PetPurchaseService;
 import com.github.tomakehurst.wiremock.client.WireMock;
 import com.github.tomakehurst.wiremock.junit.WireMockRule;
 import org.junit.*;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MvcResult;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
+import static org.mockito.Matchers.anyString;
+import static org.mockito.Mockito.doNothing;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 public class OrderFacadeTest extends APIBaseTest {
-    @Rule
-    public WireMockRule petServiceMock = new WireMockRule(9018);
+
+    @MockBean
+    private PetPurchaseService petPurchaseService;
 
     @Before
     public void setUp() throws Exception {
-        stubFor(WireMock.put(urlEqualTo("/api/pets/status"))
-                .willReturn(ok()));
+        doNothing().when(petPurchaseService).lockPetOfOrder(anyString());
     }
 
     @Test
@@ -67,7 +71,6 @@ public class OrderFacadeTest extends APIBaseTest {
         return location.substring(location.lastIndexOf("/") + 1);
     }
 
-    @Ignore // wired if enable this test, then the above test will be failed for stubbing.
     @Test
     public void shouldPayTheOrderAfterJustCreated() throws Exception {
         MvcResult mvcResult = this.mockMvc.perform(post("/api/orders")
@@ -85,7 +88,6 @@ public class OrderFacadeTest extends APIBaseTest {
 
     @After
     public void tearDown() throws Exception {
-        removeStub(WireMock.put(urlEqualTo("/api/pets/status"))
-                .willReturn(ok()));
+
     }
 }
