@@ -1,5 +1,6 @@
 package com.ThoughtWorks.DDD.Order.Application;
 
+import com.ThoughtWorks.DDD.Order.Application.DTO.OrderDTO;
 import com.ThoughtWorks.DDD.Order.domain.order.Order;
 import com.ThoughtWorks.DDD.Order.domain.order.OrderRepository;
 import com.ThoughtWorks.DDD.Order.domain.order.OrderStatus;
@@ -35,6 +36,7 @@ public class OrderApplicationServiceTest {
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
     }
+
 
     @Test
     public void should_be_able_to_pay_the_created_order() throws Exception {

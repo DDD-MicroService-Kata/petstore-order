@@ -81,4 +81,8 @@ public class Order implements Entity<Long> {
     public void completed() {
         orderStatus = OrderStatus.COMPLETED;
     }
+
+    public void canceled() {
+        orderStatus = OrderStatus.Cancled;
+    }
 }

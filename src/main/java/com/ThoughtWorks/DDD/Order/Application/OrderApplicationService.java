@@ -53,4 +53,12 @@ public class OrderApplicationService {
         order.completed();
         orderRepository.save(order);
     }
+
+    public void cancelOrder(Long orderId) {
+        Order order = orderRepository.findOne(orderId);
+        order.canceled();
+        Payment payment = paymentRepository.paymentOf(orderId);
+        payment.waitToRefund();
+        petPurchaseService.Return(order.getPet().getPetId());
+    }
 }

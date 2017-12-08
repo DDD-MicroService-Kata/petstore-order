@@ -67,10 +67,6 @@ public class OrderFacadeTest extends APIBaseTest {
                         "}"));
     }
 
-    private String id(String location) {
-        return location.substring(location.lastIndexOf("/") + 1);
-    }
-
     @Test
     public void shouldPayTheOrderAfterJustCreated() throws Exception {
         MvcResult mvcResult = this.mockMvc.perform(post("/api/orders")
@@ -86,8 +82,27 @@ public class OrderFacadeTest extends APIBaseTest {
                 .andExpect(status().isCreated());
     }
 
-    @After
-    public void tearDown() throws Exception {
+    @Test
+    public void shouldCancelTheOrder() throws Exception {
+        MvcResult mvcResult = this.mockMvc.perform(post("/api/orders")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(withJson("order.json")))
+                .andExpect(status().isCreated())
+                .andReturn();
 
+        String location = mvcResult.getResponse().getHeader("location");
+
+        this.mockMvc.perform(post(location + "/payments")
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isCreated());
+
+        this.mockMvc.perform(post(location + "/status/canceled")
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isCreated());
+
+    }
+
+    private String id(String location) {
+        return location.substring(location.lastIndexOf("/") + 1);
     }
 }

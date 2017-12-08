@@ -44,4 +44,8 @@ public class Payment implements Entity<Long> {
     public void paid() {
         paymentStatus = PaymentStatus.PAID;
     }
+
+    public void waitToRefund() {
+        paymentStatus = PaymentStatus.WaitToRefund;
+    }
 }

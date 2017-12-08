@@ -20,4 +20,9 @@ public class TranslatePetPurchaseService implements PetPurchaseService {
     public void lockPetOfOrder(String petId) {
         petClient.changeStatus(new PetStatusChanged(petId, PetStatus.Locked));
     }
+
+    @Override
+    public void Return(String petId) {
+        petClient.changeStatus(new PetStatusChanged(petId, PetStatus.ForSale));
+    }
 }
