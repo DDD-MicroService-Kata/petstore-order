@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import static java.lang.String.format;
 import static java.net.URI.create;
@@ -30,23 +31,18 @@ public class OrderFacade extends HttpFacadeBaseClass {
 
     @GetMapping("/{id}")
     public final ApiForResponse<Order> findById(@PathVariable("id") final long id) {
-        Order order = orderQueryService.queryOrder(id);
-        ApiForResponse<Order> orderApiForResponse = new ApiForResponse<>(order.getId(), order);
-        return orderApiForResponse;
+        throw new NotImplementedException();
     }
 
     @PostMapping
     public final ResponseEntity createOrder(@RequestBody final ApiForRequest<OrderDTO> req) {
-        OrderDTO attributes = req.getAttributes();
-        Order order = orderApplicationService.bookPet(attributes);
-
-        return buildResponseEntity(create(format("/api/orders/%d", order.getId())), HttpStatus.CREATED);
+        throw new NotImplementedException();
     }
 
     @PostMapping("/{id}/payments")
     @ResponseStatus(HttpStatus.CREATED)
     public final void createOrder(@PathVariable("id") final long id) {
-        orderApplicationService.payOrder(id);
+        throw new NotImplementedException();
     }
 }
 

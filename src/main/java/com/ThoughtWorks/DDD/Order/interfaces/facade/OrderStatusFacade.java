@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import static java.lang.String.format;
 import static java.net.URI.create;
@@ -35,7 +36,7 @@ public class OrderStatusFacade extends HttpFacadeBaseClass {
     @PostMapping("/{id}/status/canceled")
     @ResponseStatus(HttpStatus.CREATED)
     public final void createOrder(@PathVariable("id") final long id) {
-        orderApplicationService.payOrder(id);
+        throw new NotImplementedException();
     }
 }
 
