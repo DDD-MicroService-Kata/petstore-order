@@ -1,1 +1,0 @@
-alter table `pet_order` Add column order_status VARCHAR(20)
