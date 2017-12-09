@@ -1,15 +1,17 @@
 package com.thoughtworks.ddd.order.interfaces.controller;
 
+import com.github.tomakehurst.wiremock.client.WireMock;
+import com.github.tomakehurst.wiremock.junit.WireMockClassRule;
 import com.thoughtworks.ddd.order.APIBaseTest;
-import com.thoughtworks.ddd.order.application.PetPurchaseService;
 import org.junit.Before;
+import org.junit.ClassRule;
+import org.junit.Rule;
 import org.junit.Test;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MvcResult;
 
-import static org.mockito.Matchers.anyString;
-import static org.mockito.Mockito.doNothing;
+import static com.github.tomakehurst.wiremock.client.WireMock.ok;
+import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -17,12 +19,16 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 public class OrderControllerTest extends APIBaseTest {
 
-    @MockBean
-    private PetPurchaseService petPurchaseService;
+    @ClassRule
+    public static WireMockClassRule wireMockRule = new WireMockClassRule(9018);
+
+    @Rule
+    public WireMockClassRule instanceRule = wireMockRule;
 
     @Before
     public void setUp() throws Exception {
-        doNothing().when(petPurchaseService).lockPetOfOrder(anyString());
+        instanceRule.stubFor(WireMock.put(urlEqualTo("/api/pets/status"))
+                .willReturn(ok()));
     }
 
     @Test
