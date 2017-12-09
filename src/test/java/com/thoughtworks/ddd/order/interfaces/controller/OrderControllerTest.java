@@ -2,7 +2,8 @@ package com.thoughtworks.ddd.order.interfaces.controller;
 
 import com.thoughtworks.ddd.order.APIBaseTest;
 import com.thoughtworks.ddd.order.application.PetPurchaseService;
-import org.junit.*;
+import org.junit.Before;
+import org.junit.Test;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MvcResult;
@@ -62,6 +63,18 @@ public class OrderControllerTest extends APIBaseTest {
                         "        }" +
                         "    }" +
                         "}"));
+
+        this.mockMvc.perform(get(location + "/payments" + "/1")
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().json("{" +
+                                        "'data': {" +
+                                        "'id': 3," +
+                                        "'attributes': {" +
+                                        "'id': 3," +
+                                        "'orderId': 3," +
+                                        "'paymentStatus': 'UNPAID'" +
+                                        "}}}"));
     }
 
     @Test

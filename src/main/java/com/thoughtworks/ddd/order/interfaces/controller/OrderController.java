@@ -1,9 +1,10 @@
 package com.thoughtworks.ddd.order.interfaces.controller;
 
-import com.thoughtworks.ddd.order.application.dto.OrderDTO;
 import com.thoughtworks.ddd.order.application.OrderApplicationService;
 import com.thoughtworks.ddd.order.application.OrderQueryService;
+import com.thoughtworks.ddd.order.application.dto.OrderDTO;
 import com.thoughtworks.ddd.order.domain.order.Order;
+import com.thoughtworks.ddd.order.domain.payment.Payment;
 import com.thoughtworks.ddd.order.interfaces.common.ApiForRequest;
 import com.thoughtworks.ddd.order.interfaces.common.ApiForResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +42,12 @@ public class OrderController extends BaseController {
         Order order = orderApplicationService.bookPet(new Order(attributes.getCustomer(), attributes.getShop(), attributes.getPet()));
 
         return buildResponseEntity(create(format("/api/orders/%d", order.getId())), HttpStatus.CREATED);
+    }
+
+    @GetMapping("/{id}/payments/{payment-id}")
+    public final ApiForResponse<Payment> getPaymentOfOrder(@PathVariable("id") final long id) {
+        Payment payment = orderApplicationService.getPayment(id);
+        return new ApiForResponse<>(payment.getId(), payment);
     }
 
     @PostMapping("/{id}/payments")

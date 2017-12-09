@@ -53,4 +53,10 @@ public class OrderApplicationService {
         payment.waitToRefund();
         petPurchaseService.Return(order.getPet().getPetId());
     }
+
+    public Payment getPayment(long id) {
+        Order order = orderRepository.findOne(id);
+        return paymentRepository.paymentOf(order.getId());
+    }
+
 }
