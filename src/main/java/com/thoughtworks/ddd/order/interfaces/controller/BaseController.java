@@ -1,4 +1,4 @@
-package com.thoughtworks.ddd.order.interfaces.facade;
+package com.thoughtworks.ddd.order.interfaces.controller;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 
 import java.net.URI;
 
-public class HttpFacadeBaseClass {
+public class BaseController {
     ResponseEntity buildResponseEntity(URI location, HttpStatus noContent) {
         HttpHeaders headers = new HttpHeaders();
         headers.setLocation(location);

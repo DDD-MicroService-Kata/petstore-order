@@ -1,4 +1,4 @@
-package com.thoughtworks.ddd.order.interfaces.facade;
+package com.thoughtworks.ddd.order.interfaces.controller;
 
 import com.thoughtworks.ddd.order.application.dto.OrderDTO;
 import com.thoughtworks.ddd.order.application.OrderApplicationService;
@@ -16,14 +16,14 @@ import static java.net.URI.create;
 
 @RestController
 @RequestMapping("/api/orders")
-public class OrderFacade extends HttpFacadeBaseClass {
+public class OrderController extends BaseController {
 
     private final OrderApplicationService orderApplicationService;
     private OrderQueryService orderQueryService;
 
 
     @Autowired
-    public OrderFacade(OrderApplicationService orderApplicationService, OrderQueryService orderQueryService) {
+    public OrderController(OrderApplicationService orderApplicationService, OrderQueryService orderQueryService) {
         this.orderApplicationService = orderApplicationService;
         this.orderQueryService = orderQueryService;
     }

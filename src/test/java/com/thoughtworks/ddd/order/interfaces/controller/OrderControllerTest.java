@@ -1,4 +1,4 @@
-package com.thoughtworks.ddd.order.interfaces.facade;
+package com.thoughtworks.ddd.order.interfaces.controller;
 
 import com.thoughtworks.ddd.order.APIBaseTest;
 import com.thoughtworks.ddd.order.domain.pet.PetPurchaseService;
@@ -14,7 +14,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-public class OrderFacadeTest extends APIBaseTest {
+public class OrderControllerTest extends APIBaseTest {
 
     @MockBean
     private PetPurchaseService petPurchaseService;

@@ -1,4 +1,4 @@
-package com.thoughtworks.ddd.order.interfaces.facade;
+package com.thoughtworks.ddd.order.interfaces.controller;
 
 import com.thoughtworks.ddd.order.application.OrderApplicationService;
 import com.thoughtworks.ddd.order.application.OrderQueryService;
@@ -14,7 +14,7 @@ import static java.lang.String.format;
 
 @RestController
 @RequestMapping("/api/orders")
-public class OrderStatusFacade extends HttpFacadeBaseClass {
+public class OrderStatusFacade extends BaseController {
 
     private final OrderApplicationService orderApplicationService;
 
