@@ -38,7 +38,7 @@ public class OrderController extends BaseController {
     @PostMapping
     public final ResponseEntity createOrder(@RequestBody final ApiForRequest<OrderDTO> req) {
         OrderDTO attributes = req.getAttributes();
-        Order order = orderApplicationService.bookPet(attributes);
+        Order order = orderApplicationService.bookPet(new Order(attributes.getCustomer(), attributes.getShop(), attributes.getPet()));
 
         return buildResponseEntity(create(format("/api/orders/%d", order.getId())), HttpStatus.CREATED);
     }

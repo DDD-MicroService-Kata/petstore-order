@@ -1,6 +1,6 @@
 package com.thoughtworks.ddd.order.infrastructure.service;
 
-import com.thoughtworks.ddd.order.domain.pet.PetPurchaseService;
+import com.thoughtworks.ddd.order.application.PetPurchaseService;
 import com.thoughtworks.ddd.order.infrastructure.client.PetClient;
 import com.thoughtworks.ddd.order.infrastructure.client.PetStatus;
 import com.thoughtworks.ddd.order.infrastructure.client.PetStatusChanged;

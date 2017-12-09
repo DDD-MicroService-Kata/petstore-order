@@ -81,4 +81,48 @@ public final class OrderDTO {
     public String getPetId() {
         return petId;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public void setArea(String area) {
+        this.area = area;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public void setMoreDetails(String moreDetails) {
+        this.moreDetails = moreDetails;
+    }
+
+    public void setPrice(Integer price) {
+        this.price = price;
+    }
+
+    public void setAmount(Integer amount) {
+        this.amount = amount;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public void setPetId(String petId) {
+        this.petId = petId;
+    }
 }

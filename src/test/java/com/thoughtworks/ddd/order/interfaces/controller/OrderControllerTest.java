@@ -1,7 +1,7 @@
 package com.thoughtworks.ddd.order.interfaces.controller;
 
 import com.thoughtworks.ddd.order.APIBaseTest;
-import com.thoughtworks.ddd.order.domain.pet.PetPurchaseService;
+import com.thoughtworks.ddd.order.application.PetPurchaseService;
 import org.junit.*;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
