@@ -45,7 +45,7 @@ public class OrderController extends BaseController {
 
     @PostMapping("/{id}/payments")
     @ResponseStatus(HttpStatus.CREATED)
-    public final void createOrder(@PathVariable("id") final long id) {
+    public final void payOrder(@PathVariable("id") final long id) {
         orderApplicationService.payOrder(id);
     }
 }
