@@ -1,6 +1,5 @@
-package com.ThoughtWorks.DDD.Order.Application;
+package com.ThoughtWorks.DDD.Order.application;
 
-import com.ThoughtWorks.DDD.Order.Application.DTO.OrderDTO;
 import com.ThoughtWorks.DDD.Order.domain.order.Order;
 import com.ThoughtWorks.DDD.Order.domain.order.OrderRepository;
 import com.ThoughtWorks.DDD.Order.domain.order.OrderStatus;

@@ -1,4 +1,4 @@
-package com.ThoughtWorks.DDD.Order.Application.DTO;
+package com.ThoughtWorks.DDD.Order.application.DTO;
 
 import com.ThoughtWorks.DDD.Order.domain.order.Address;
 import com.ThoughtWorks.DDD.Order.domain.order.Customer;

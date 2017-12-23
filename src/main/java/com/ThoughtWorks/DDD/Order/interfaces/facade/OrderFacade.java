@@ -1,8 +1,8 @@
 package com.ThoughtWorks.DDD.Order.interfaces.facade;
 
-import com.ThoughtWorks.DDD.Order.Application.DTO.OrderDTO;
-import com.ThoughtWorks.DDD.Order.Application.OrderApplicationService;
-import com.ThoughtWorks.DDD.Order.Application.OrderQueryService;
+import com.ThoughtWorks.DDD.Order.application.DTO.OrderDTO;
+import com.ThoughtWorks.DDD.Order.application.OrderApplicationService;
+import com.ThoughtWorks.DDD.Order.application.OrderQueryService;
 import com.ThoughtWorks.DDD.Order.domain.order.Order;
 import com.ThoughtWorks.DDD.Order.interfaces.common.ApiForRequest;
 import com.ThoughtWorks.DDD.Order.interfaces.common.ApiForResponse;
