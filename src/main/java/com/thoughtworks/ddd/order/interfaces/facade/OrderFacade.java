@@ -1,6 +1,6 @@
 package com.thoughtworks.ddd.order.interfaces.facade;
 
-import com.thoughtworks.ddd.order.application.DTO.OrderDTO;
+import com.thoughtworks.ddd.order.application.dto.OrderDTO;
 import com.thoughtworks.ddd.order.application.OrderApplicationService;
 import com.thoughtworks.ddd.order.application.OrderQueryService;
 import com.thoughtworks.ddd.order.domain.order.Order;

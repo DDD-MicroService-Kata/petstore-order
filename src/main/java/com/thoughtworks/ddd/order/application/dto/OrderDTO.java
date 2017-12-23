@@ -1,4 +1,4 @@
-package com.thoughtworks.ddd.order.application.DTO;
+package com.thoughtworks.ddd.order.application.dto;
 
 import com.thoughtworks.ddd.order.domain.order.Address;
 import com.thoughtworks.ddd.order.domain.order.Customer;

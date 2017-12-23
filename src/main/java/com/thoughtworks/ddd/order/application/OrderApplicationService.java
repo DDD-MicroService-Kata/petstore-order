@@ -1,6 +1,6 @@
 package com.thoughtworks.ddd.order.application;
 
-import com.thoughtworks.ddd.order.application.DTO.OrderDTO;
+import com.thoughtworks.ddd.order.application.dto.OrderDTO;
 import com.thoughtworks.ddd.order.domain.order.Order;
 import com.thoughtworks.ddd.order.domain.order.OrderRepository;
 import com.thoughtworks.ddd.order.domain.order.Pet;
