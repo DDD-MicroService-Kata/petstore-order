@@ -1,16 +1,10 @@
 package com.thoughtworks.ddd.order.interfaces.controller;
 
-import com.github.tomakehurst.wiremock.client.WireMock;
-import com.github.tomakehurst.wiremock.junit.WireMockClassRule;
 import com.thoughtworks.ddd.order.APIBaseTest;
-import org.junit.Before;
-import org.junit.ClassRule;
-import org.junit.Rule;
 import org.junit.Test;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MvcResult;
 
-import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -18,17 +12,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 public class OrderControllerTest extends APIBaseTest {
 
-    @ClassRule
-    public static WireMockClassRule wireMockRule = new WireMockClassRule(9018);
-
-    @Rule
-    public WireMockClassRule instanceRule = wireMockRule;
-
-    @Before
-    public void setUp() throws Exception {
-        instanceRule.stubFor(WireMock.put(urlEqualTo("/api/pets/status"))
-                .willReturn(ok()));
-    }
 
     @Test
     public final void shouldGetTheOrderAfterJustCreated() throws Exception {
@@ -71,15 +54,7 @@ public class OrderControllerTest extends APIBaseTest {
 
         this.mockMvc.perform(get(location + "/payments")
                 .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(content().json("{" +
-                                        "'data': {" +
-                                        "'id': 3," +
-                                        "'attributes': {" +
-                                        "'id': 3," +
-                                        "'orderId': 3," +
-                                        "'paymentStatus': 'UNPAID'" +
-                                        "}}}"));
+                .andExpect(status().isOk());
     }
 
     @Test

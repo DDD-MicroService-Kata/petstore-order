@@ -60,6 +60,7 @@ dependencies {
 	compile("org.flywaydb:flyway-core:4.1.1")
 	runtime('mysql:mysql-connector-java')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
+	testCompile('io.rest-assured:rest-assured:3.0.7')
 	testCompile 'com.h2database:h2'
 	testCompile "com.github.tomakehurst:wiremock-standalone:2.12.0"
 }
