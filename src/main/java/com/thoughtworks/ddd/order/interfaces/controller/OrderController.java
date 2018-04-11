@@ -12,8 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import static java.lang.String.format;
-import static java.net.URI.create;
+import java.net.URI;
 
 @RestController
 @RequestMapping("/api/orders")
@@ -38,13 +37,17 @@ public class OrderController extends BaseController {
 
     @PostMapping
     public final ResponseEntity createOrder(@RequestBody final ApiForRequest<OrderDTO> req) {
-        OrderDTO attributes = req.getAttributes();
-        Order order = orderApplicationService.bookPet(new Order(attributes.getCustomer(), attributes.getShop(), attributes.getPet()));
-
-        return buildResponseEntity(create(format("/api/orders/%d", order.getId())), HttpStatus.CREATED);
+        OrderDTO orderDTO = req.getAttributes();
+        Order order = toOrder(orderDTO);
+        Order newOrder = orderApplicationService.bookPet(order);
+        return buildResponseEntity(URI.create("/api/orders/" + newOrder.getId()), HttpStatus.CREATED);
     }
 
-    @GetMapping("/{id}/payments/{payment-id}")
+    private Order toOrder(OrderDTO orderDTO) {
+        return new Order(orderDTO.getCustomer(), orderDTO.getShop(), orderDTO.getPet());
+    }
+
+    @GetMapping("/{id}/payments")
     public final ApiForResponse<Payment> getPaymentOfOrder(@PathVariable("id") final long id) {
         Payment payment = orderApplicationService.getPayment(id);
         return new ApiForResponse<>(payment.getId(), payment);
